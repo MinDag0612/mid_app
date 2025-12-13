@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":auth"))
+    implementation(project(":main"))
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -45,6 +47,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
-
-
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
