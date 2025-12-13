@@ -11,9 +11,9 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.core.AuthRepository;
-import com.example.core.User;
-import com.example.core.UserRepo;
+import com.example.core.auth.AuthRepository;
+import com.example.core.user.User;
+import com.example.core.user.UserRepo;
 import com.example.home.Home;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

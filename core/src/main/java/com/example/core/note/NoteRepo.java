@@ -1,14 +1,18 @@
-package com.example.core;
-
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
+package com.example.core.note;
 
 public class NoteRepo {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final NoteStorage storage;
+
+    public NoteRepo() {
+        this(new FirestoreNoteStorage());
+    }
+
+    public NoteRepo(NoteStorage storage) {
+        this.storage = storage;
+    }
 
     public void addNote(Note note) {
-        db.collection("notes").add(note);
+        storage.add(note);
     }
 
 //    public ArrayList<Note> getNotes(String userId) {
