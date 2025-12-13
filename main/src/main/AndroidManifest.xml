@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".Note_detail"
+            android:name=".NoteDetail"
             android:exported="false" />
         <activity
             android:name=".Home"

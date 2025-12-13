@@ -32,6 +32,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+    implementation("com.google.firebase:firebase-firestore")
 
     implementation(libs.appcompat)
     implementation(libs.material)

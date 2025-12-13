@@ -38,25 +38,26 @@
         <ImageView
             android:id="@+id/imgBanner"
             android:layout_width="0dp"
-            android:layout_height="63dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:adjustViewBounds="true"
-            android:scaleType="fitEnd"
+            android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
     </LinearLayout>
 
     <!-- SEARCH BAR -->
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:iconifiedByDefault="false"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:queryHint="Tìm kiếm..."
         android:background="@drawable/search_bg"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_margin="8dp"
-        android:elevation="2dp" />
+        android:layout_margin="8dp" />
+
 
 
     <FrameLayout
