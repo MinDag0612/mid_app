@@ -31,20 +31,18 @@ android {
 }
 
 dependencies {
+    // Firebase BOM
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
-
-    // Các artifact Firebase (không cần version)
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
 
-    // Các thư viện khác
+    // AndroidX & Material
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.annotation:annotation:1.6.0")
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.firebase.auth)
+
+    // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

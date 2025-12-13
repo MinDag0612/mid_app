@@ -32,6 +32,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation("com.google.firebase:firebase-auth:22.2.2")
+    implementation(project(":main"))
 
     implementation(libs.appcompat)
     implementation(libs.material)

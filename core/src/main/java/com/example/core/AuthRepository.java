@@ -44,10 +44,7 @@ public class AuthRepository {
                 });
     }
 
-    // Lấy user hiện tại
-    public FirebaseUser getCurrentUser() {
-        return auth.getCurrentUser();
-    }
+
 
     // Logout
     public void logout() {
@@ -58,4 +55,13 @@ public class AuthRepository {
     public interface AuthCallback {
         void onComplete(boolean success, String errorMessage);
     }
+
+    public String userId() {
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            return user.getUid();
+        }
+        return null;
+    }
+
 }

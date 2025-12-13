@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 public class User {
     String fullname;
     String email;
+    public User(){}
 
     public User(String fullname, String email) {
         this.fullname = fullname;

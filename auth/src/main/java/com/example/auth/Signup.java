@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.core.AuthRepository;
 import com.example.core.User;
 import com.example.core.UserRepo;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Signup extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class Signup extends AppCompatActivity {
     AuthRepository authRepository = new AuthRepository();
     TextView txtGoLogin;
     UserRepo userRepo = new UserRepo();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
 
@@ -65,7 +68,12 @@ public class Signup extends AppCompatActivity {
             authRepository.registerUser(email, pass, (success, errorMessage) -> {
                 if(success) {
                     Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                    userRepo.saveUser(this, new User(fullname, email));
+
+                    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    String userId = firebaseUser.getUid();
+
+                    userRepo.saveUser(this, new User(fullname, email), userId);
+
 
                     Intent intent = new Intent(this, Login.class);
                     intent.putExtra("email", email);

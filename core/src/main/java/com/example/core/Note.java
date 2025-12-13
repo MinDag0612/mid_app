@@ -1,4 +1,4 @@
-package com.example.home;
+package com.example.core;
 
 public class Note {
     public String title;
