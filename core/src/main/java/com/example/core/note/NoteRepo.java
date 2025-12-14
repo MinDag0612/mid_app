@@ -1,5 +1,4 @@
-package com.example.core;
-
+package com.example.core.note;
 import android.util.Log;
 
 import com.google.firebase.firestore.DocumentReference;
@@ -11,7 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NoteRepo {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final NoteStorage storage;
+
+    public NoteRepo() {
+        this(new FirestoreNoteStorage());
+    }
+
+    public NoteRepo(NoteStorage storage) {
+        this.storage = storage;
+    }
 
     // Trong NoteRepo
     public void addNoteWithUserId(Note note, String userId, OnNoteAdded callback) {

@@ -1,4 +1,4 @@
-package com.example.core;
+package com.example.core.note;
 
 import com.google.firebase.Timestamp;
 
