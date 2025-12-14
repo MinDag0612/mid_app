@@ -39,6 +39,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.annotation:annotation:1.6.0")
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
+
 
     // Test
     testImplementation(libs.junit)

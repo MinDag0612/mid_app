@@ -1,16 +1,22 @@
 package com.example.core.note;
+
 import android.util.Log;
 
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class NoteRepo {
     private final NoteStorage storage;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     public NoteRepo() {
         this(new FirestoreNoteStorage());
@@ -44,7 +50,6 @@ public class NoteRepo {
     }
 
 
-
     public void getNoteById(String userId, OnNotesLoaded callback) {
         ArrayList<Note> notes = new ArrayList<>();
 
@@ -73,6 +78,13 @@ public class NoteRepo {
         void onFailure(Exception e);
     }
 
+    public interface OnImageUploaded {
+        void onSuccess(List<String> urls);
+
+        void onFailure(Exception e);
+    }
+
+
     public void updateNote(String title, String content, String noteId) {
         db.collection("Note")
                 .document(noteId)
@@ -84,6 +96,41 @@ public class NoteRepo {
 
     public void deleteNote(String noteId) {
         db.collection("Note").document(noteId).delete();
+    }
+
+    public void getUrlByNoteId(String noteId, OnImageUploaded callback) {
+
+        db.collection("Note")
+                .document(noteId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+
+                        List<String> urls =
+                                (List<String>) documentSnapshot.get("image");
+
+                        if (urls == null) {
+                            urls = new ArrayList<>();
+                        }
+
+                        callback.onSuccess(urls);
+                    } else {
+                        callback.onSuccess(new ArrayList<>());
+                    }
+                })
+                .addOnFailureListener(callback::onFailure);
+    }
+
+    public void removeImage(String noteId, String url) {
+        db.collection("Note")
+                .document(noteId)
+                .update("image", FieldValue.arrayRemove(url));
+    }
+
+    public void addImage(String noteId, String url) {
+        db.collection("Note")
+                .document(noteId)
+                .update("image", FieldValue.arrayUnion(url));
     }
 
 

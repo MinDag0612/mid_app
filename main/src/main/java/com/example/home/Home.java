@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.core.NoteRepo;
+import com.example.core.note.NoteRepo;
 import com.google.firebase.Timestamp;
 import com.example.core.note.Note;
 

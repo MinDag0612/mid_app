@@ -50,4 +50,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
+    implementation("com.cloudinary:cloudinary-android-download:2.5.0")
+    implementation("com.cloudinary:cloudinary-android-preprocess:2.5.0")
 }

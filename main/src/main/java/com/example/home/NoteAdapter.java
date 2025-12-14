@@ -93,7 +93,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             txtContentPreview = itemView.findViewById(R.id.txtContentPreview);
 
             itemView.setOnClickListener(v -> {
-                int pos = getBindingAdapterPosition();
+                int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION && listener != null) {
                     listener.onNoteClick(filteredList.get(pos));
                 }
